@@ -42,7 +42,7 @@
 </script>
 
 <div class="listheader">
-    <label for="reverse">
+    <label for="reverse" title="reverse sorting">
         sort
         <input bind:checked="{reversed}" id="reverse" hidden type="checkbox">
     </label>

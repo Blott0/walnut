@@ -33,7 +33,7 @@
 
         <Brandlist {brands} />
 
-        <label class="toggleAdd" for="toggleAdd">
+        <label class="toggleAdd" for="toggleAdd" title="toggle add brand">
             add
             <input hidden bind:checked="{toggle.add}" id="toggleAdd" type="checkbox">
         </label>
