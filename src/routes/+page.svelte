@@ -85,7 +85,7 @@
 
         {#if toggle.del}
 
-            <form transition:slide method="POST" action="?/del">
+            <form transition:slide method="POST" action="?/delete">
                 <fieldset>
                     <legend>Archive brand</legend>
                     <label for="brandSelect">
