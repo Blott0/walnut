@@ -80,7 +80,7 @@
         @apply flex font-bold justify-between p-3 bg-black border-x-2 border-black rounded-t-lg items-center;
     }
     .listheader > label {
-        @apply pr-7;
+        @apply pr-7 cursor-pointer;
         position: relative;
     }
     .listheader > label:first-of-type::after {
