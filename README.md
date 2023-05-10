@@ -1,18 +1,24 @@
-# create-svelte
+# Walnut Application Assignment
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Simple brand-listing app for Walnut.
 
-## Creating a project
+A secure implementation has been built for requesting an API token.
 
-If you're seeing this, you've probably already done this step. Congrats!
+✔ The token gets closed/deleted after each request.
+✔ It is required to show the following information in the visual table:
+    Identifier, Logo, and Title of the brands.
+✔ Swap out one of the logos of the available brands for a picture of a
+    little duck each time the list gets loaded.
+✔ The page must have a search function available to search through the
+    titles of the brands.
+✔ There is a form available for creating a new brand.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+✔ It is not visually un-appealing.
+✔ The design of the website is enhanced by the use of Tailwindcss.
+✔ The website has an inspection page that allows users to inspect a
+    brand.
+✖ Users have the ability to 'archive' a brand, which means it will no
+    longer be displayed on the main page.
 
 ## Developing
 
