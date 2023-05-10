@@ -58,7 +58,7 @@
 <ul>
     {#each brandsFiltered as brand}
         <li>
-            <a href="/{brand.identifier}">
+            <a href="/{brand.identifier}" title="Click to inspect {brand.name}">
                 <div class="logo">
                     {#if brand.identifier === randomDuckId}
                         <Duck />
