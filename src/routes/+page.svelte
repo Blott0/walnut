@@ -33,9 +33,14 @@
 
         <Brandlist {brands} />
 
-        <label class="toggleAdd" for="toggleAdd" title="toggle add brand">
+        <label class="toggle" for="toggleAdd" title="toggle add brand">
             add
             <input hidden bind:checked="{toggle.add}" id="toggleAdd" type="checkbox">
+        </label>
+
+        <label class="toggle" for="toggleDel" title="toggle add brand">
+            archive
+            <input hidden bind:checked="{toggle.del}" id="toggleDel" type="checkbox">
         </label>
 
         {#if toggle.add}
@@ -76,6 +81,35 @@
                     </div>
                 </fieldset>
             </form>
+            {/if}
+
+        {#if toggle.del}
+
+            <form transition:slide method="POST" action="?/del">
+                <fieldset>
+                    <legend>Archive brand</legend>
+                    <label for="brandSelect">
+                        select brand
+                        <select required name="brand" id="brandSelect">
+                            <option selected disabled value="">select a brand</option>
+                            {#each brands as brand}
+                                <option value="{brand.identifier}">{brand.name}</option>
+                            {/each}
+                        </select>
+                    </label>
+                    <div class="btnWrapper">
+                        <label for="submit">
+                            submit
+                            <Check />
+                            <input hidden id="submit" type="submit">
+                        </label>
+                        <label on:click="{() => { toggle.add = false }}">
+                            cancel
+                            <Cross />
+                        </label>
+                    </div>
+                </fieldset>
+            </form>
 
         {/if}
 
@@ -102,11 +136,11 @@
     dialog {
         @apply bg-transparent;
     }
-    .toggleAdd {
+    .toggle {
         @apply inline-block cursor-pointer bg-black pl-3 py-2 pr-8 my-6 rounded-lg;
         position: relative;
     }
-    .toggleAdd::after {
+    .toggle::after {
         @apply transition-transform border-white;
         content: '';
         display: block;
@@ -120,8 +154,14 @@
         height: 0;
         width: 0;
     }
-    .toggleAdd:has( > input:checked )::after {
+    .toggle:has( > input:checked )::after {
         transform: translateY(-50%) rotate(135deg);
+    }
+    form + form {
+        @apply mt-4;
+    }
+    select {
+        @apply border-2 border-gray rounded;
     }
     .btnWrapper > label {
         font-size: 0;
