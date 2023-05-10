@@ -2,21 +2,28 @@
 
     export let brands
 
+    // search svg icon
     import Search from '$lib/Search.svelte'
+    // duckling svg
     import Duck from '$lib/Duck.svelte'
 
     let searchTerm
+    // sorting toggled
     let toggleSearch
+    // sorting reversed
     let reversed
+    // sorting brands by name
     $:brandsSorted = reversed ? brands.sort((a,b) => {return (a.name > b.name ? 1 : -1)}).reverse() : brands.sort((a,b) => {return (a.name > b.name ? 1 : -1)})
+    // filter brands using searchTerm
     $:brandsFiltered = searchTerm && toggleSearch && searchTerm !== '' ? brandsSorted.filter(listfilter) : brandsSorted
-    
+    // random brand id from list
     const randomDuckId = brands[Math.ceil(Math.random() * brands.length) - 1].identifier
 
     function listfilter(item) {
         return item.name.match(new RegExp(searchTerm, 'i'))
 	}
 
+    // adds <mark> element around searchresult
     function strreplace(str, sv) {
         let oldvalue = str
         let newvalue = ''
@@ -34,7 +41,7 @@
 
 </script>
 
-<div class="header">
+<div class="listheader">
     <label for="reverse">
         sort
         <input bind:checked="{reversed}" id="reverse" hidden type="checkbox">
@@ -69,17 +76,16 @@
 </ul>
 
 <style lang="postcss">
-    .header {
+    .listheader {
         @apply flex font-bold justify-between p-3 bg-black border-x-2 border-black rounded-t-lg items-center;
     }
-    .header > label {
+    .listheader > label {
         @apply pr-7;
         position: relative;
     }
-    .header > label:first-of-type::after {
-        @apply transition-transform border-white;
+    .listheader > label:first-of-type::after {
+        @apply transition-transform block border-white;
         content: '';
-        display: block;
         position: absolute;
         top: 50%;
         right: 12px;
@@ -90,7 +96,7 @@
         height: 0;
         width: 0;
     }
-    .header > label:has( > input:checked )::after {
+    .listheader > label:has( > input:checked )::after {
         transform: translateY(-50%) rotate(135deg);
     }
     label:nth-of-type(2) {

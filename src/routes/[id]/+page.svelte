@@ -1,7 +1,7 @@
 <script>
 
+    // server load result
     import { page } from '$app/stores'
-
     let brand = $page.data.data
 
 </script>

@@ -1,16 +1,24 @@
 <script>
 
+    // svelte standard transition
     import { slide } from 'svelte/transition'
+    // access to server load data and form
 	import { page } from '$app/stores'
+    // list module
     import Brandlist from '$lib/Brandlist.svelte'
+    // icons
     import Check from '$lib/Check.svelte'
     import Cross from '$lib/Cross.svelte'
 
+    // load data
     let brands = $page.data.data
+    // form result if it exists
     let form = $page.form ? $page.form : false
+    // dialog element binding
     let modal
+    // toggler checkbox binding
     const toggle = {}
-
+    // modal activation
     $:form && modal ? modal.showModal() : false
 
 </script>
