@@ -127,5 +127,72 @@ export const actions = {
 
         return { success: true }
 
+    },
+    delete: async ({ request }) => {
+
+        // get formdata
+        const form = await request.formData()
+        const brandId = form.get('brand')
+
+        // request token
+        const requestToken = await fetch('https://api.walletapp.co/oauth/token', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            body: JSON.stringify({
+                'email': LOGIN, 
+                'password': PASS,
+                'permissions': [ 'brands.delete' ]
+            })
+        })
+
+        const token = await requestToken.json()
+        let key
+
+        if (token.error) {
+            return token
+        }
+        else {
+            key = token.data.key
+        }
+
+        // delete the brand
+
+        const requestDel = await fetch('https://api.walletapp.co/brands/' + brandId, {
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                'Authorization': 'Bearer ' + key
+            }
+        })
+        const del = await requestDel.json()
+
+        let error
+        if (del.errors) {
+            error = del.errors
+        }
+
+        // delete the token
+
+        const deleteToken = await fetch('https://api.walletapp.co/oauth/token', {
+            method: 'DELETE',
+            headers: {
+                'Authorization': 'Bearer ' + key,
+            }
+        })
+        const deleted = await deleteToken.json()
+        if (!deleted.success) {
+            return deleted
+        }
+
+        if (error) {
+            return error
+        }
+
+        return { success: true }
     }
+
 }
