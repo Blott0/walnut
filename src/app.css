@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply text-white bg-gray;
+}
+.container {
+    @apply p-3 md:max-w-3xl md:m-auto;
+}
+h1 {
+    @apply text-3xl text-black font-bold;
+}
+li:nth-of-type(odd) > a {
+    @apply bg-odd hover:bg-hover;
+}
+li:nth-of-type(even) > a {
+    @apply bg-even hover:bg-hover;
+}
+dialog {
+    @apply outline-0;
+}
+fieldset {
+    @apply grid max-w-sm gap-y-2 bg-white text-black rounded-lg overflow-hidden;
+}
+legend {
+    @apply bg-black text-white mx-2 px-6 py-2 rounded-lg font-bold;
+}
+fieldset > label {
+    @apply grid grid-cols-2 gap-x-2 mx-8;
+}
+fieldset > p {
+    @apply mx-8 my-3;
+}
+input {
+    @apply bg-transparent outline-0;
+}
+input[type='color'] {
+    @apply place-self-end cursor-pointer;
+}
+input[type='text'], input[type='url'] {
+    @apply border-b-2 border-black;
+}
+input[type='text'].search {
+    @apply border-white;
+}
+.btnWrapper {
+    @apply grid grid-cols-2;
+}
+.btnWrapper label {
+    @apply grid cursor-pointer mx-0 place-items-center hover:bg-green p-2 transition;
+}
+.btnWrapper label:nth-of-type(2) {
+    @apply hover:bg-red;
+}
+.btnWrapper label svg .st0 {
+    @apply fill-green transition;
+}
+.btnWrapper label svg .st1 {
+    @apply transition;
+}
+.btnWrapper label:nth-of-type(2) svg .st0 {
+    @apply fill-red;
+}
+.btnWrapper label:hover svg .st0 {
+    @apply fill-white;
+}
+.btnWrapper label:hover svg .st1 {
+    @apply fill-white;
+}
