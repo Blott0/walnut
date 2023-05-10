@@ -23,6 +23,10 @@
 
 </script>
 
+<svelte:head>
+	<title>Walnut - Brand list</title>
+</svelte:head>
+
 <section>
     <div class="container">
         <h1>Brands list</h1>

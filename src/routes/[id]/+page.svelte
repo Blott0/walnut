@@ -6,6 +6,10 @@
 
 </script>
 
+<svelte:head>
+	<title>{brand.name} - Brand inspection</title>
+</svelte:head>
+
 <section>
     <div class="container">
         {#if brand}
